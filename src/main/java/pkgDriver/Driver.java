@@ -19,7 +19,7 @@ public class Driver {
     GLFWKeyCallback keyCallback;
     GLFWFramebufferSizeCallback fbCallback;
     long window;
-    static int WIN_WIDTH = 1800, WIN_HEIGHT = 1200; // Related to square dimensions?
+    static int WIN_WIDTH = 1000, WIN_HEIGHT = 1000; // Related to square dimensions?
     int WIN_POS_X = 30, WIN_POX_Y = 90;
     private static final int OGL_MATRIX_SIZE = 16;
     // call glCreateProgram() here - we have no gl-context here
