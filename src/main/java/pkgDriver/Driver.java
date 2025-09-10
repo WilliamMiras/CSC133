@@ -115,7 +115,7 @@ public class Driver {
     void renderObjects() {
         int vbo = glGenBuffers();
         int ibo = glGenBuffers();
-        float[] vertices = {-20f, -20f, 20f, -20f, 20f, 20f, -20f, 20f}; // Verticies of "square"?
+        float[] vertices = {0f, -40f, 40f, -40f, 40f, 0f, 0f, 0f}; // Verticies of "square"? {bottom-left, bottom-right, top-right, top-left} (x, y)
         int[] indices = {0, 1, 2, 0, 2, 3};
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBufferData(GL_ARRAY_BUFFER, (FloatBuffer) BufferUtils.
