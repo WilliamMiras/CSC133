@@ -115,7 +115,8 @@ public class Driver {
     void renderObjects() {
         int vbo = glGenBuffers();
         int ibo = glGenBuffers();
-        float[] vertices = {0f, -40f, 40f, -40f, 40f, 0f, 0f, 0f, -40f, 0f, 0f, 0f, 0f, 40f, -40f, 40f}; // Verticies of "square"? {bottom-left, bottom-right, top-right, top-left} (x, y)
+        final float XMIN = 0f, YMIN = 0f, LENGTH = 40f;
+        float[] vertices = {XMIN, YMIN - LENGTH, XMIN + LENGTH, YMIN - LENGTH, XMIN + LENGTH, YMIN, XMIN, YMIN, XMIN - LENGTH, YMIN, XMIN, YMIN, XMIN, YMIN + LENGTH, XMIN - LENGTH, YMIN + LENGTH}; // Verticies of "square"? {bottom-left, bottom-right, top-right, top-left} (x, y)
         int[] indices = {0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7};
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBufferData(GL_ARRAY_BUFFER, (FloatBuffer) BufferUtils.
@@ -132,12 +133,13 @@ public class Driver {
                 viewProjMatrix.get(myFloatBuffer));
         glUniform3f(renderColorLocation, 1.0f, 0.498f, 0.153f);
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        int VTD = 12; // need to process 6 Vertices To Draw 2 triangles
+        final int VERTICES_TO_DRAW = 6; // need to process 6 Vertices To Draw 2 triangles
+        final int NUM_SQUARES = 2;
         while (!glfwWindowShouldClose(window)) {
             glfwPollEvents();
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            glDrawElements(GL_TRIANGLES, VTD, GL_UNSIGNED_INT, 0L);
+            glDrawElements(GL_TRIANGLES, VERTICES_TO_DRAW * NUM_SQUARES, GL_UNSIGNED_INT, 0L);
             glfwSwapBuffers(window);
         }
     } // renderObjects
